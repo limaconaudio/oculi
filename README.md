@@ -8,7 +8,7 @@ Written in SpinalHDL featuring a custom VexRiscv core.
  - GLES2 & some trivial extensions
  - scaling, cropping, pixel format conversion and blending instructions
 
-## Imporved Performance extensions
+## Improved Performance extensions
  - eglCreateImageKHR
  - eglDestroyImageKHR
  - eglQueryWaylandBufferWL
