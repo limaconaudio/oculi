@@ -2,13 +2,13 @@
 
 Written in SpinalHDL featuring a custom VexRiscv core.
 
-## Required extentions
+## Required extensions
  - eglGetPlatformDisplayEXT
  - eglCreatePlatformWindowSurfaceEXT
  - GLES2 & some trivial extensions
  - scaling, cropping, pixel format conversion and blending instructions
 
-## Improved Performance extensions
+## Improved performance extensions
  - eglCreateImageKHR
  - eglDestroyImageKHR
  - eglQueryWaylandBufferWL
@@ -27,7 +27,12 @@ Written in SpinalHDL featuring a custom VexRiscv core.
  - glPopDebugGroupKHR
  - glPushDebugGroupKHR
 
-## Kernel Drivers
+## Kernel drivers
  - DRM
  - KMS
  - GBM
+
+## Investigate
+
+https://github.com/swaywm/wlroots/tree/master/render
+ 
