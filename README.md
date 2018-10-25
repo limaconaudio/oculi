@@ -1,2 +1,30 @@
 # oculi
-Mini GPU targetting wlroots acceleration
+A mini gpu targetting wlroots acceleration
+
+# Required
+eglGetPlatformDisplayEXT
+eglCreatePlatformWindowSurfaceEXT
+GLES2 & some trivial extensions
+Look at scaling, cropping, pixel format conversion and blending instructions
+
+# Optional performance
+eglCreateImageKHR
+eglDestroyImageKHR
+eglQueryWaylandBufferWL
+eglBindWaylandDisplayWL
+eglUnbindWaylandDisplayWL
+glEGLImageTargetTexture2DOES
+eglSwapBuffersWithDamageEXT
+eglSwapBuffersWithDamageKHR
+eglQueryDmaBufFormatsEXT
+eglQueryDmaBufModifiersEXT
+eglExportDMABUFImageQueryMESA
+eglExportDMABUFImageMESA
+eglDebugMessageControlKHR
+glDebugMessageCallbackKHR
+glDebugMessageControlKHR
+glPopDebugGroupKHR
+glPushDebugGroupKHR
+
+# Kernel Driver Support
+DRM, KMS, and GBM support
