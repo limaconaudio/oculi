@@ -1,4 +1,4 @@
-## Oculi - a mini gpu targeting basic wlroots/wayland acceleration
+## Oculi - a mini graphics accelerator for basic wlroots/wayland requirements
 
 Written in SpinalHDL featuring a custom VexRiscv core.
 
