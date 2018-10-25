@@ -9,12 +9,79 @@ import vexriscv.plugin._
 import scala.collection.mutable
 import scala.collection.mutable.ArrayBuffer
 
-class OculiTopLevel extends Component {
+object OculiCore {
 
-}
-
-object OculiTopLevelVerilog {
-  def main(args: Array[String]) {
-    SpinalVerilog(new OculiTopLevel)
+  def main(args: Array[String]): Unit = {
+    SpinalVerilog(OculiCore)
   }
+  
+  
+ def oculiCore() = new VexRiscv(
+    config = VexRiscvConfig(
+      plugins = List(
+        
+        new IBusSimplePlugin(
+          resetVector = 0x80000000l,
+          cmdForkOnSecondStage = false,
+          cmdForkPersistence = true,
+          prediction = NONE,
+          catchAccessFault = false,
+          compressedGen = false,
+          injectorStage = true,
+          rspHoldValue = false
+        ),
+        
+        new DBusSimplePlugin(
+          catchAddressMisaligned = true,
+          catchAccessFault = false
+        ),
+        
+        new DecoderSimplePlugin(
+          catchIllegalInstruction = false
+        ),
+        
+        new RegFilePlugin(
+          regFileReadyKind = plugin.SYNC,
+          zeroBoot = false
+        ),
+        
+        new MulDivIterativePlugin(
+          genMul = true,
+          genDiv = true,
+          mulUnrollFactor = 1,
+          divUnrollFactor = 1
+        ),
+        
+        new IntAluPlugin,
+        
+        new SrcPlugin(
+          separatedAddSub = true,
+          executeInsertion = false,
+          decodeAddSub = false
+        ),
+        
+        new FullBarrelShifterPlugin(
+          earlyInjection = false
+        ),
+        
+        new HazardSimplePlugin(
+          bypassExecute = true,
+          bypassMemory = true,
+          bypassWriteBack = true,
+          bypassWriteBackBuffer = true
+        ),
+        
+        new BranchPlugin(
+          earlyBranch = false,
+          catchAddressMisaligned = true
+        )
+        
+        new YamlPlugin("cpu0.yaml")
+        
+      )
+    )
+  )
+  
+  SpinalConfig(mergeAsyncProcess = false).generateVerilog(oculiCore())
+  
 }
