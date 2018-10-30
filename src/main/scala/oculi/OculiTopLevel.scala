@@ -51,6 +51,8 @@ object OculiCore {
           mulUnrollFactor = 1,
           divUnrollFactor = 1
         ),
+		
+		new MacPlugin(SFixMacPluginConfig.default), // Q16.16 and Q32.32 acc
         
         new IntAluPlugin,
         
